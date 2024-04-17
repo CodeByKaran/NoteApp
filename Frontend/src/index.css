@@ -1,0 +1,21 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+.hideScroll::-webkit-scrollbar{
+    display: none;
+}
+
+.hideScroll{
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    resize: none;
+}
+
+
+
+.remove_Num_Pad::-webkit-outer-spin-button,::-webkit-inner-spin-button{
+    appearance: none;
+}
+   
