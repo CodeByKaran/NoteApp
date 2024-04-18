@@ -27,6 +27,7 @@ export default function SignUp() {
     }
     
     try {
+      console.log("run hua")
       let {data} = await axios.post("/api/v1/users/signup",userCredentials)
       setLogging(false)
       console.log(data)
