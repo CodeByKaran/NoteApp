@@ -33,6 +33,7 @@ export default function SignUp() {
       if(data.statusCode===200){
         navigate(`/verify/${data.data._id}`)
       }else{
+        console.log(data)
         showAlert(data.response.data.message)
         setLogging(false)
       }
