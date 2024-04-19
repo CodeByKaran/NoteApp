@@ -28,7 +28,7 @@ export default function SignUp() {
     
     try {
       console.log("run hua")
-      let {data} = await axios.post("/api/v1/users/signup",userCredentials)
+      let {data} = await axios.post("https://noteapp-aznr.onrender.com/api/v1/users/signup",userCredentials)
       setLogging(false)
       console.log(data)
       if(data.statusCode===200){
