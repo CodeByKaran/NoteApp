@@ -44,8 +44,9 @@ export default function Login({userLogged}) {
     
     const data = await res.json()
 
-      if(data.data.isVerified){
-        if(data.statusCode==200){
+      
+      if(data.statusCode==200){
+        if(data.data.isVerified){
           setLoading(false)
           dispatch(setUser(data.data))
           userLogged(true)
@@ -53,12 +54,13 @@ export default function Login({userLogged}) {
           navigate(`/home/${data.data._id}`)
           showSuccessMessage("logged In")
         }else{
+          showAlert("please verify first")
+          setLoading(false)
+        }
+        }else{
           showAlert(data.message)
           setLoading(false)
         }
-    }else{
-       showAlert("please verify YourSelf")
-    }
     } catch (error) {
        showAlert(error.response.data.message);
        setLoading(false)
