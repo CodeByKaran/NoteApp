@@ -27,12 +27,7 @@ export default function App() {
 
   useEffect(()=>{
     let value = Boolean(getItem("isLogged"))
-    console.log(value , typeof value)
-    if(value==="true"){
-      setIsLogged(true)
-    }else{
-      setIsLogged(false)
-    }
+    setIsLogged(value)
   },[])
 
   return (
