@@ -81,6 +81,8 @@ const editNote=async(req,res)=>{
   try {
     const {_id} = req.params
     const {title,content} = req.body
+    
+    console.log("title content: ",title,content)
 
     const note = await Note.findById(_id)
 

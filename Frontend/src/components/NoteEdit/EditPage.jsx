@@ -84,7 +84,7 @@ export default function EditPage() {
         
         const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/logged/note/edit",{
           method: "PUT",
-          body:JSON.stringify(noteData),
+          body: JSON.stringify(noteData),
          headers:{
          "Content-Type": "application/json",
           'Authorization': `Bearer ${refToken}`
