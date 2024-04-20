@@ -43,6 +43,8 @@ export default function Login({userLogged}) {
       redirect: "follow", 
     })
     
+    const data = await res.json()
+    
       if(data.data.isVerified){
         if(data.statusCode==200){
           setLoading(false)
