@@ -27,7 +27,6 @@ export default function SignUp() {
     }
     
     try {
-      console.log("run hua")
      // let {data} = await axios.post("https://noteapp-aznr.onrender.com/api/v1/users/signup",userCredentials)
     const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/users/signup",
         {
@@ -43,16 +42,14 @@ export default function SignUp() {
       )
       const data = await res.json()
       setLogging(false)
-      console.log(data)
+      
       if(data.statusCode===200){
         navigate(`/verify/${data.data._id}`)
       }else{
-        console.log(data)
         showAlert(data.response.data.message)
         setLogging(false)
       }
     } catch (error) {
-      console.log(error)
       showAlert(error.message)
       setLogging(false)
     }
