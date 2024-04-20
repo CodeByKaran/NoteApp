@@ -17,7 +17,7 @@ export default function SignUp() {
 
   const signUpuser=async(e)=>{
     e.preventDefault()
-    
+    console.log("run")
     setLogging(true)
 
     let userCredentials={
@@ -27,7 +27,7 @@ export default function SignUp() {
     }
     
     try {
-     // let {data} = await axios.post("https://noteapp-aznr.onrender.com/api/v1/users/signup",userCredentials)
+
     const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/users/signup",
         {
           method: "POST",
@@ -42,7 +42,7 @@ export default function SignUp() {
       )
       const data = await res.json()
       setLogging(false)
-      
+      console.log(data)
       if(data.statusCode===200){
         navigate(`/verify/${data.data._id}`)
       }else{
