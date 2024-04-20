@@ -46,7 +46,7 @@ export default function SignUp() {
       if(data.statusCode===200){
         navigate(`/verify/${data.data._id}`)
       }else{
-        showAlert(data.response.data.message)
+        showAlert(data.message)
         setLogging(false)
       }
     } catch (error) {
