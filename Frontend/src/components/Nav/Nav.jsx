@@ -41,7 +41,6 @@ export default function Nav({userLogged}) {
       const {data} = await axios.get("/api/v1/users/log-out")
       if(data.statusCode==200){
         setUser(null)
-        navigate("/login")
         showSuccessMessage(data.message)
       }else{
         showSuccessMessage(data.response.data.message)
