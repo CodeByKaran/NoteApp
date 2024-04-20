@@ -20,9 +20,11 @@ const genRefreshAndAccessToken=async(userId)=>{
     
     const accessToken =  user.genAccessToken()
     const refreshToken =  user.genRefreshToken()
-
+  console.log("phelo hai ye: ",refreshToken)
     user.refreshToken = refreshToken
    await user.save({validateBeforeSave:false})
+   
+   console.log("ye lo ji: ",user.refreshToken)
 
     return {accessToken,refreshToken}
   } catch (error) {
