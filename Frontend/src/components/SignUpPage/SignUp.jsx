@@ -6,7 +6,6 @@ import { FaRegEyeSlash } from 'react-icons/fa'
 import { togglEye } from '../../Hooks/usePassHS'
 import { FiLoader } from "react-icons/fi";
 import { GET_USER } from '../../helper/getCurrentUser.js';
-import { FiLoader } from "react-icons/fi";
 
 
 export default function SignUp() {
