@@ -36,9 +36,9 @@ export default function Home() {
     }
   })
 
-  useEffect(useCallback(()=>{
+  useEffect(()=>{
     getAllNotes()
-  },[]))
+  },[])
 
   const {Notes} = useSelector(state=>state.note)
 
