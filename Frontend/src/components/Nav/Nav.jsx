@@ -59,6 +59,7 @@ export default function Nav({userLogged}) {
       if(data.statusCode==200){
         setCookie("refreshToken","",0)
         dispatch(setUser(null))
+        navigate("/login")
         showSuccessMessage(data.message)
       }else{
         showSuccessMessage(data.message)
