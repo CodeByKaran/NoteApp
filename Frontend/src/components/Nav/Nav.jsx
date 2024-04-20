@@ -49,12 +49,19 @@ export default function Nav({userLogged}) {
    
   const logOut=async()=>{
     try {
-      const {data} = await axios.get("/api/v1/users/log-out")
+      const refToken = getCookie("refreshToken")
+      const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/users/log-out",{
+        headers:{
+          'Authorization': `Bearer ${refToken}`
+        }
+      })
+      const data = await res.json()
       if(data.statusCode==200){
-        setUser(null)
+        setCookie("refreshToken","",0)
+        dispatch(setUser(null))
         showSuccessMessage(data.message)
       }else{
-        showSuccessMessage(data.response.data.message)
+        showSuccessMessage(data.message)
       }
     } catch (error) {
         showSuccessMessage(error.response.data.message)
