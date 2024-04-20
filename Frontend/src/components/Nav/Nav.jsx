@@ -19,7 +19,9 @@ export default function Nav({userLogged}) {
   const getCurrentUSer = async()=>{  
   
      try {
-      const {data} = await axios.get("/api/v1/users/fetch-user")
+      //const {data} = await axios.get("/api/v1/users/fetch-user")
+      const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/users/fetch-user")
+      const data = await res.json()
       if(data.statusCode==200){
         dispatch(setUser(data.data))
       }else{
