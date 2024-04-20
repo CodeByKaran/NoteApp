@@ -39,8 +39,7 @@ export default function Login({userLogged}) {
           "Content-Type": "application/json",
           // 'Content-Type': 'application/x-www-form-urlencoded',
          },
-      mode: "cors",
-      redirect: "follow", 
+      
     })
     
     const data = await res.json()
