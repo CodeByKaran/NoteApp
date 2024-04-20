@@ -82,7 +82,7 @@ export default function EditPage() {
           content: content
         }
         
-        const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/logged/note/edit",{
+        const res = await fetch(`https://noteapp-aznr.onrender.com/api/v1/logged/note/edit/${id}`,{
           method: "PUT",
           body: JSON.stringify(noteData),
          headers:{
