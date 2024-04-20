@@ -39,6 +39,8 @@ export default function EditPage() {
           content:content
         }
         
+        console.log(title,content)
+        
         const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/logged/note/create",{
           method:"POST",
           body:JSON.stringify(noteData),

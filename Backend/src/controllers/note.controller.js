@@ -9,6 +9,8 @@ import mongoose from "mongoose";
 const createNote=async(req,res)=>{
     try {
         const {title,content} = req.body
+        
+        console.log(title,content)
 
         if(!title || !content){
             return res.status(402)
