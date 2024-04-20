@@ -32,6 +32,7 @@ export default function SignUp() {
      const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/users/signup",
         {
           method: "POST",
+          body: JSON.stringify(userCredentials),
           headers: {
           "Content-Type": "application/json",
           // 'Content-Type': 'application/x-www-form-urlencoded',
