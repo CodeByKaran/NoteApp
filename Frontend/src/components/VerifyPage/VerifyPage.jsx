@@ -25,7 +25,7 @@ export default function VerifyPage() {
   const verifyUser=async()=>{
     let id = getUserId()
     try {
-     //let {data} = await axios.post(`/api/v1/users/verify/${id}`,{userOTP:Number(otp)})
+
      let res = await fetch(`https://noteapp-aznr.onrender.com/api/v1/users/verify/${id}`,{
        method: "POST",
        body: JSON.stringify({
