@@ -13,6 +13,5 @@ export const getUserIdInEditPage=()=>{
 
 export const getUserIdInDelApi=()=>{
     let location = window.location.href.split("/")
-    console.log(location);
     return location[location.length-3]
 }

@@ -39,7 +39,6 @@ export default function EditPage() {
           content:content
         }
         
-        console.log(title,content)
         
         const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/logged/note/create",{
           method:"POST",
@@ -52,7 +51,7 @@ export default function EditPage() {
         
         const data = await res.json()
         
-        console.log(data)
+        
         if(data.statusCode==200){
           showSuccessMessage(data.message)
           console.log(userId)
@@ -93,7 +92,7 @@ export default function EditPage() {
         
         const data = await res.json()
         
-        console.log(data)
+        
         if(data.statusCode==200){
           navigate(`/home/${userIdInEdit}`)
           console.log(userIdInEdit)
@@ -150,7 +149,7 @@ export default function EditPage() {
         })
         const data = await res.json()
         if(data.statusCode==200){
-          console.log(userIdInEdit);
+          
           navigate(`/home/${userIdInEdit}`)
           showSuccessMessage(data.message)
         }else{
