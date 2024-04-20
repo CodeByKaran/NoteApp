@@ -51,7 +51,7 @@ export default function Home() {
   }
   
   return (
-    <div className='md:w-[75%] relative min-h-[90vh] sm:min-h-[80vh]'>
+    <div className='md:w-[75%] relative min-h-[85vh] sm:min-h-[80vh]'>
       <div className='flex flex-wrap p-2 mt-7 justify-between md:w-[75%] sm:w-[80%] '>
         {
           Notes?.map((e,i)=><Note key={i} title={e.title} content={e.content} id={e._id} refreshNote={getAllNotes}/>)
