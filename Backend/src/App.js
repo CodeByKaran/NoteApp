@@ -5,7 +5,7 @@ import cookieParser from 'cookie-parser'
 export const app = express();
 
 app.use(cors({
-    origin:"https://note-app-liard-alpha.vercel.app/",
+    origin:"https://note-app-liard-alpha.vercel.app",
     credentials:true
 }))
 
