@@ -71,17 +71,21 @@ export default function EditPage() {
         
         const title = titleRef.current.value        
         const content = contentRef.current.value
+        
         if(!title ||  !content){
           showAlert("title and content is required!")
           return
         }
         
+        const noteData ={
+          title: title,
+          content: content
+        }
+        
         const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/logged/note/edit",{
-          method:"PUT",
-          body:JSON.stringify({
-            title,content
-          }),
-        headers:{
+          method: "PUT",
+          body:JSON.stringify(noteData),
+         headers:{
          "Content-Type": "application/json",
           'Authorization': `Bearer ${refToken}`
          }
@@ -98,7 +102,7 @@ export default function EditPage() {
           showAlert(data.message)
         }
       } catch (error) {
-        showAlert(error.response.data.message)
+        showAlert(error.message)
       }
     }
 
