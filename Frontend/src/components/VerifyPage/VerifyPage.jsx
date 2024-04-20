@@ -30,13 +30,18 @@ export default function VerifyPage() {
        method: "POST",
        body: JSON.stringify({
          userOTP:Number(otp)
-       })
+       }),
+       headers: {
+          "Content-Type": "application/json",
+         },
+       mode: "cors",
+       redirect: "follow", 
      })
      const data = await res.json()
      if(data.statusCode===200){
       navigate("/login")
      }else{
-      showAlert(data.response.data.message)
+      showAlert(data.message)
      }
     } catch (error) {
       showAlert(error.response.data.message)
