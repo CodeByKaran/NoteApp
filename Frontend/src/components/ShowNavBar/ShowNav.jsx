@@ -6,14 +6,20 @@ export default function ShowNav({children}) {
   
   const location = useLocation()
   
+  const [isNav,setIsNav]= useState(false)
+  
   useEffect(()=>{
     let locArr = location.pathname.split("/")
-    console.log(locArr)
+    if(locArr[1]==="home"){
+      setIsNav(true)
+    }else{
+      setIsNav(false)
+    }
   },[location])
   
   return(
    <>
-     {children}
+     {isNav && children}
    </>
   )
 }
