@@ -21,8 +21,6 @@ const genRefreshAndAccessToken=async(userId)=>{
     const accessToken =  user.genAccessToken()
     const refreshToken =  user.genRefreshToken()
   console.log("phelo hai ye: ",refreshToken)
-    user.refreshToken = refreshToken
-   await user.save({validateBeforeSave:false})
    
    console.log("ye lo ji: ",user.refreshToken)
 
@@ -213,7 +211,10 @@ const loginUser= async(req,res)=>{
 
     }
     
-    
+    user.refreshToken = refreshToken
+   await user.save({validateBeforeSave:false})
+   
+   
     return res
     .status(200)
     .cookie("accessToken",accessToken,options)
