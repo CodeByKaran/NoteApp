@@ -22,8 +22,18 @@ export default function VerifyForgetOtp() {
         return
       }
 
-      const {data} = await axios.post('/api/v1/users/reset-password/otp/verify',config)
-
+      
+      
+      const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/users/reset-password/otp/verify",{
+        method:"POST",
+        body: JSON.stringify(config),
+        headers:{
+         "Content-Type": "application/json",
+        }
+      })
+      
+      const data = await res.json() 
+      
       if(data.statusCode==200){
         showSuccessMessage("otp is verified")       
         navigate("/forget/change-pass")

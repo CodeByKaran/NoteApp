@@ -17,7 +17,19 @@ export default function Otp() {
         showAlert("email is required")
         return
       }
-      const {data} = await axios.post('/api/v1/users/reset-password/otp',{email})
+      
+      const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/users/reset-password/otp",{
+        method:"POST",
+        body: JSON.stringify({
+          email
+        }),
+        headers:{
+         "Content-Type": "application/json",
+        }
+      })
+      
+      const data = await res.json()
+      
       if(data.statusCode==200){
         setAnyLocal("email",email)
         showSuccessMessage("otp has been sent to email")       

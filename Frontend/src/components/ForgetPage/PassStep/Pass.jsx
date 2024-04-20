@@ -28,7 +28,17 @@ export default function Pass() {
         return
       }
 
-      const {data} = await axios.post('/api/v1/users/reset-password/otp/verify/pass',config)
+      
+      const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/users/reset-password/otp/verify/pass",{
+        method:"POST",
+        body: JSON.stringify(config),
+        headers:{
+         "Content-Type": "application/json",
+        }
+      })
+      
+      const data = await res.json() 
+      
   
       if(data.statusCode==200){
         clearLocal("email")
