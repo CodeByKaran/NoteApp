@@ -21,7 +21,7 @@ export default function Home() {
       const data = await res.json()
       console.log(data)
       if(data.statusCode==200){
-        setNotes(dispatch(setNotes(data.data)))
+        dispatch(setNotes(data.data))
       }else{
         console.log(data)
         showAlert(data.message)
