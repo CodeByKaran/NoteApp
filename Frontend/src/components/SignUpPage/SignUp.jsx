@@ -1,10 +1,11 @@
-import React,{useRef,useState} from 'react'
+import React,{useRef,useState,useEffect} from 'react'
 import axios from "axios"
 import { Link, useNavigate } from 'react-router-dom'
 import { showAlert } from '../../Hooks/useShowAlert'
 import { FaRegEyeSlash } from 'react-icons/fa'
 import { togglEye } from '../../Hooks/usePassHS'
 import { FiLoader } from "react-icons/fi";
+import { GET_USER } from '../../helper/getCurrentUser.js';
 
 
 export default function SignUp() {
@@ -54,6 +55,14 @@ export default function SignUp() {
       setLogging(false)
     }
   }
+  
+  useEffect(()=>{
+    GET_USER()
+    .then(res=>{
+      navigate(`/home/${res.data._id}`)
+    })
+    .catch(error=>console.log(error))
+  },[])
    
   return (
     <div className='h-[100vh] w-full flex justify-center items-center select-none'>

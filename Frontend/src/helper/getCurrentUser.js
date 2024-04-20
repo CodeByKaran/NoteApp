@@ -12,7 +12,6 @@ export const GET_USER = async()=>{
         }
       })
       const data = await res.json()
-      console.log("help: ",data)
       resolve(data)
   } catch (error) {
     reject(error)
