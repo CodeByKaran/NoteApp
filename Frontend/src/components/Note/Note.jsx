@@ -6,6 +6,7 @@ import { getUserId } from '../../Hooks/useGetId';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setInfo } from '../../func/features/noteEditInfo/noteEditSlice';
+import { getCookie} from "../../helper/cookie.js"
 
 export default function Note({title,content,id,refreshNote}) {
 
@@ -15,7 +16,15 @@ export default function Note({title,content,id,refreshNote}) {
 
    const deleteNote=async(id)=>{
     try {
-     const {data} = await axios.delete(`/api/v1/logged/note/delete/${id}`)
+     const refToken = getCookie("refreshToken")
+        
+        const res = await fetch(`https://noteapp-aznr.onrender.com/api/v1/logged/note/delete/${id}`,{
+          method:"DELETE",
+        headers:{
+          'Authorization': `Bearer ${refToken}`
+        }
+        })
+        const data = await res.json()
      if(data.statusCode==200){
        showSuccessMessage(data.message)
        refreshNote()

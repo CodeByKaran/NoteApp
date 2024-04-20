@@ -140,7 +140,15 @@ export default function EditPage() {
     
     const deleteNote=async()=>{
       try {
-        const {data} = await axios.delete(`/api/v1/logged/note/delete/${id}`)
+        const refToken = getCookie("refreshToken")
+        
+        const res = await fetch(`https://noteapp-aznr.onrender.com/api/v1/logged/note/delete/${id}`,{
+          method:"DELETE",
+        headers:{
+          'Authorization': `Bearer ${refToken}`
+        }
+        })
+        const data = await res.json()
         if(data.statusCode==200){
           console.log(userIdInEdit);
           navigate(`/home/${userIdInEdit}`)
