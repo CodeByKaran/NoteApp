@@ -30,7 +30,7 @@ export default function App() {
     console.log(isLogged)
     setIsLogged(value)
     console.log(isLogged)
-  },[])
+  },[isLogged])
 
   return (
     <center className='text-black'>
