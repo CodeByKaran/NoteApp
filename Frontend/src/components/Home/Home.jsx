@@ -14,10 +14,16 @@ export default function Home() {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  
+  const { userData } = useSelector(state=>state.login)
 
   const getAllNotes=useCallback(async()=>{
     try {
-      const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/logged/note/all")
+      const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/logged/note/all",{
+        headers:{
+          'Authorization': `Bearer ${userData.refreshToken}`
+        }
+      })
       const data = await res.json()
       console.log("home: ",data)
       if(data.statusCode==200){
