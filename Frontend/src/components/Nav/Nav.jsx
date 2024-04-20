@@ -24,6 +24,7 @@ export default function Nav({userLogged}) {
   
    if(isLog==="false"){
     userLogged(false)
+    navigate("/login")
     return
    }
   
