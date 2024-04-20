@@ -20,10 +20,11 @@ export default function Nav({userLogged}) {
   const getCurrentUSer = async()=>{  
   
      try {
-       console.log(userData)
+       const refToken = getCookie("refreshToken")
+       
       const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/users/fetch-user",{
         headers:{
-          'Authorization': `Bearer ${userData?.refreshToken}`
+          'Authorization': `Bearer ${refToken}`
         }
       })
       const data = await res.json()

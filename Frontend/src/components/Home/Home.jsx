@@ -20,9 +20,10 @@ export default function Home() {
 
   const getAllNotes=useCallback(async()=>{
     try {
+      const refToken = getCookie("refreshToken")
       const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/logged/note/all",{
         headers:{
-          'Authorization': `Bearer ${userData?.refreshToken}`
+          'Authorization': `Bearer ${refToken}`
         }
       })
       const data = await res.json()
