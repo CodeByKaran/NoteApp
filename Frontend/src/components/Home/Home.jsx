@@ -33,7 +33,7 @@ export default function Home() {
   })
 
   useEffect(useCallback(()=>{
-    //getAllNotes()
+    getAllNotes()
   },[]))
 
   const {Notes} = useSelector(state=>state.note)

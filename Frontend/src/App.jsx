@@ -20,6 +20,8 @@ export default function App() {
 
   const [isLogged,setIsLogged] = useState(false)
   
+  setItem(false)
+  
   const userLogged=(bool)=>{
     setItem(bool)
     setIsLogged(bool)

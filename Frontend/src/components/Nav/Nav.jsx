@@ -31,6 +31,7 @@ export default function Nav({userLogged}) {
         dispatch(setUser(data.data))
         // setIsUsr(true)
         //navigate(`/home/${data.data._id}`)
+        userLogged(true)
       }else{
         //showAlert(data.response.data.message);
         navigate("/login")
