@@ -30,7 +30,7 @@ export const Authentication=async(req,res,next)=>{
   
     }
     
-    req.user = user
+    req.user = await user
     next()
 
   } catch (error) {
