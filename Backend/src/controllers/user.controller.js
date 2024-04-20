@@ -17,11 +17,13 @@ const genRefreshAndAccessToken=async(userId)=>{
   try {
     const user = await User.findById(userId)
 
+    console.log(user)
+    
     const accessToken =  user.genAccessToken()
     const refreshToken =  user.genRefreshToken()
 
-    user.refreshToken=refreshToken
-    user.save({validateBeforeSave:false})
+    user.refreshToken = refreshToken
+   await user.save({validateBeforeSave:false})
 
     return {accessToken,refreshToken}
   } catch (error) {
@@ -182,7 +184,7 @@ const loginUser= async(req,res)=>{
     let user = null
 
     if(email)
-    user = await User.findOne({email}).select("-refreshToken")
+    user = await User.findOne({email})
     else
     user = await User.findOne({username})
 
