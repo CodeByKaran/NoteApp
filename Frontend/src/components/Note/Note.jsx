@@ -58,7 +58,7 @@ export default function Note({title,content,id,refreshNote}) {
             
             </div>
 
-            <p className='text-[14px] mt-[45px]  text-start p-2 cursor-default break-words pb-[16px] myNote' onClick={GotoEdit}> 
+            <p className='text-[14px] mt-[45px]  text-start p-2 cursor-default break-words mb-[16px] myNote' onClick={GotoEdit}> 
                 {content.length>140?content.toString().slice(0,140):content}
             </p>
         </div>
