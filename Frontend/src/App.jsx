@@ -50,10 +50,10 @@ export default function App() {
       </nav>
       <main>
       <Routes>
-        <Route path='/home/:id' element={<Home/>}/>
-        <Route path='/home/*' element={<h1>404 Page Not Found</h1>} />
-        <Route path='/home/:id/Edit' element={<EditPage/>} />
-        <Route path='/home/:id/Edit/:id' element={<EditPage/>} />
+        <Route path='home/:id' element={<Home/>}/>
+        <Route path='home/*' element={<h1>404 Page Not Found</h1>} />
+        <Route path='home/:id/Edit' element={<EditPage/>} />
+        <Route path='home/:id/Edit/:id' element={<EditPage/>} />
       </Routes>    
       </main>
       </>

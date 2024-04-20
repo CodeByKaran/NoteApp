@@ -19,8 +19,8 @@ export default function Home() {
     try {
       const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/logged/note/all")
       const data = await res.json()
+      console.log(data)
       if(data.statusCode==200){
-        console.log(data)
         setNotes(dispatch(setNotes(data.data)))
       }else{
         console.log(data)

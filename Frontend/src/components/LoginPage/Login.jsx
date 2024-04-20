@@ -43,7 +43,7 @@ export default function Login({userLogged}) {
     })
     
     const data = await res.json()
-    console.log(data)
+
       if(data.data.isVerified){
         if(data.statusCode==200){
           setLoading(false)
