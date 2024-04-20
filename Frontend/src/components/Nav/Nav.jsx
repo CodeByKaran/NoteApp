@@ -29,12 +29,9 @@ export default function Nav({userLogged}) {
       })
       const data = await res.json()
       if(data.statusCode==200){
-        console.log(data)
-        console.log("cookieNav: ",getCookie("refreshToken"))
         dispatch(setUser(data.data))
       }else{
-        //navigate("/login")
-        console.log("nav: ",data)
+        navigate("/login")
       }
     } catch (error) {
       showAlert(error.message)

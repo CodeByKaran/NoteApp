@@ -46,7 +46,6 @@ export default function Login() {
     const data = await res.json()
 
       if(data.statusCode==200){
-        console.log(data)
         if(data.data.isVerified){
           setLoading(false)
           setCookie("refreshToken",data.data.refreshToken,10)

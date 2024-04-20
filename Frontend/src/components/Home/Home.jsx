@@ -27,8 +27,6 @@ export default function Home() {
         }
       })
       const data = await res.json()
-      console.log("cookieHome: ",getCookie("refreshToken"))
-      console.log("home: ",data)
       if(data.statusCode==200){
         dispatch(setNotes(data.data))
       }else{

@@ -43,7 +43,6 @@ export default function SignUp() {
       )
       const data = await res.json()
       setLogging(false)
-      console.log(data)
       if(data.statusCode===200){
         navigate(`/verify/${data.data._id}`)
       }else{
