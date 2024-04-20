@@ -23,11 +23,13 @@ export default function App() {
   const userLogged=(bool)=>{
     setItem(bool)
     setIsLogged(bool)
+    console.log(bool,isLogged)
   }
 
   useEffect(()=>{
     let value = Boolean(getItem("isLogged"))
-    setIsLogged(value)
+    console.log(value)
+    setIsLogged(value==="true"?true:false)
   },[])
 
   return (
