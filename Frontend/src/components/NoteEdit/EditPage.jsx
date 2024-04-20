@@ -82,12 +82,14 @@ export default function EditPage() {
             title,content
           }),
         headers:{
+         "Content-Type": "application/json",
           'Authorization': `Bearer ${refToken}`
          }
         })
         
         const data = await res.json()
         
+        console.log(data)
         if(data.statusCode==200){
           navigate(`/home/${userIdInEdit}`)
           console.log(userIdInEdit)
