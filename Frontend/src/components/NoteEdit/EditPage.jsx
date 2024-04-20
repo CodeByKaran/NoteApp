@@ -69,7 +69,6 @@ export default function EditPage() {
           showAlert("title and content is required!")
           return
         }
-        const {data} = await axios.put(`/api/v1/logged/note/edit/${id}`,{title,content})
         
         const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/logged/note/edit",{
           method:"PUT",
