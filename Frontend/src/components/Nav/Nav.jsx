@@ -26,6 +26,7 @@ export default function Nav({userLogged}) {
       })
       const data = await res.json()
       if(data.statusCode==200){
+        console.log(data)
         dispatch(setUser(data.data))
       }else{
         //navigate("/login")
