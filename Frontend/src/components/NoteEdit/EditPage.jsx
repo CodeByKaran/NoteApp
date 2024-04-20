@@ -6,6 +6,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
+import { getCookie} from "../../helper/cookie.js"
 
 export default function EditPage() {
     
@@ -30,11 +31,25 @@ export default function EditPage() {
 
     const makeNote = async()=>{
       try {
+        const  refToken = getCookie("refreshToken")
         const title = titleRef.current.value
         const content = contentRef.current.value
-        const {data} = await axios.post("/api/v1/logged/note/create",{title,content})
+        
+        const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/logged/note/create",{
+          method:"POST",
+          body:JSON.stringify({
+            title,content
+          }),
+        headers:{
+          'Authorization': `Bearer ${refToken}`
+         }
+        })
+        
+        const data = await res.json()
+        
         if(data.statusCode==200){
           showSuccessMessage(data.message)
+          console.log(userId)
           navigate(`/home/${userId}`)
         }else{
           showAlert(data.message)
@@ -46,6 +61,8 @@ export default function EditPage() {
     
     const EditNote = async()=>{
       try {
+        const  refToken = getCookie("refreshToken")
+        
         const title = titleRef.current.value        
         const content = contentRef.current.value
         if(!title ||  !content){
@@ -53,9 +70,22 @@ export default function EditPage() {
           return
         }
         const {data} = await axios.put(`/api/v1/logged/note/edit/${id}`,{title,content})
+        
+        const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/logged/note/edit",{
+          method:"PUT",
+          body:JSON.stringify({
+            title,content
+          }),
+        headers:{
+          'Authorization': `Bearer ${refToken}`
+         }
+        })
+        
+        const data = await res.json()
+        
         if(data.statusCode==200){
-          
           navigate(`/home/${userIdInEdit}`)
+          console.log(userIdInEdit)
           showSuccessMessage("Note Edit Successfully")
         }else{
           showAlert(data.message)
