@@ -23,13 +23,18 @@ export default function SignUp() {
     let userCredentials={
       username: usernameRef.current.value,
       email: emailRef.current.value,
-      password: passwordRef.current.value
+      password: passwordRef.current.value,
+      mode: "cors",
+      redirect: "follow",
+      headers:{
+        "Content-Type": "application/json",
+      }
     }
     
     try {
       console.log("run hua")
-     // let {data} = await axios.post("https://noteapp-aznr.onrender.com/api/v1/users/signup",userCredentials)
-     const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/users/signup",
+      let {data} = await axios.post("https://noteapp-aznr.onrender.com/api/v1/users/signup",userCredentials)
+    /* const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/users/signup",
         {
           method: "POST",
           body: JSON.stringify(userCredentials),
@@ -41,8 +46,7 @@ export default function SignUp() {
           redirect: "follow", 
         }
       )
-      const newData = await res.json()
-      console.log(newData)
+      const data = await res.json()*/
       setLogging(false)
       console.log(data)
       if(data.statusCode===200){
