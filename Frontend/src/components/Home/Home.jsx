@@ -19,21 +19,18 @@ export default function Home() {
     try {
       const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/logged/note/all")
       const data = await res.json()
-      
       if(data.statusCode==200){
         dispatch(setNotes(data.data))
       }else{
-        
         showAlert(data.message)
       }
     } catch (error) {
-      
       showAlert(error.response.data.message)
     }
   })
 
   useEffect(useCallback(()=>{
-    getAllNotes()
+    //getAllNotes()
   },[]))
 
   const {Notes} = useSelector(state=>state.note)
