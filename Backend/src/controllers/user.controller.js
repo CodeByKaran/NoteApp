@@ -184,7 +184,7 @@ const loginUser= async(req,res)=>{
     if(email)
     user = await User.findOne({email}).select("-refreshToken")
     else
-    user = await User.findOne({username}).select("-refreshToken")
+    user = await User.findOne({username})
 
     if(!user){
       return res
