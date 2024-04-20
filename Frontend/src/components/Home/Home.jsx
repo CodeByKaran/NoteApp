@@ -17,7 +17,9 @@ export default function Home() {
 
   const getAllNotes=useCallback(async()=>{
     try {
-      const {data} = await axios.get("/api/v1/logged/note/all")
+      //const {data} = await axios.get("/api/v1/logged/note/all")
+      const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/logged/note/all")
+      const data = await res.json()
       if(data.statusCode==200){
         setNotes(dispatch(setNotes(data.data)))
       }else{
