@@ -31,7 +31,18 @@ export default function Login({userLogged}) {
     }
 
     try {
-      const {data} = await axios.post("/api/v1/users/login",credentials)   
+     // const {data} = await axios.post("/api/v1/users/login",credentials)
+    const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/users/login",{
+      method: "POST",
+      body: JSON.stringify(credentials),
+      headers: {
+          "Content-Type": "application/json",
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+         },
+      mode: "cors",
+      redirect: "follow", 
+    })
+    
       if(data.data.isVerified){
         if(data.statusCode==200){
           setLoading(false)
@@ -40,7 +51,7 @@ export default function Login({userLogged}) {
           navigate(`/home/${data.data._id}`)
           showSuccessMessage("logged In")
         }else{
-          showAlert(data.response.data.message)
+          showAlert(data.message)
           setLoading(false)
         }
     }else{
