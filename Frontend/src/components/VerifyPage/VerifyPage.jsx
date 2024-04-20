@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import axios from 'axios'
 import { useNavigate,Link } from 'react-router-dom'
 import { getUserId } from '../../Hooks/useGetId'
-import { showAlert } from '../../Hooks/useShowAlert'
+import { showSuccessMessage,showAlert } from '../../Hooks/useShowAlert'
 
 export default function VerifyPage() {
   
@@ -39,12 +39,13 @@ export default function VerifyPage() {
      })
      const data = await res.json()
      if(data.statusCode===200){
+       showSuccessMessage("user verified successfully")
       navigate("/login")
      }else{
       showAlert(data.message)
      }
     } catch (error) {
-      showAlert(error.response.data.message)
+      showAlert(error.message)
     }
   }
 

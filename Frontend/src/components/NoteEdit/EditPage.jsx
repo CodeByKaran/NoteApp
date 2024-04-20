@@ -60,7 +60,7 @@ export default function EditPage() {
           showAlert(data.message)
         }
       } catch (error) {
-        showAlert(error.response.data.message)
+        showAlert(error.message)
       }
     }
     
@@ -95,7 +95,7 @@ export default function EditPage() {
         
         if(data.statusCode==200){
           navigate(`/home/${userIdInEdit}`)
-          console.log(userIdInEdit)
+          
           showSuccessMessage("Note Edit Successfully")
         }else{
           showAlert(data.message)
