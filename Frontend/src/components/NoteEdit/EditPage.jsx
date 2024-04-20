@@ -34,12 +34,14 @@ export default function EditPage() {
         const  refToken = getCookie("refreshToken")
         const title = titleRef.current.value
         const content = contentRef.current.value
+        const noteData = {
+          title:title,
+          content:content
+        }
         
         const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/logged/note/create",{
           method:"POST",
-          body:JSON.stringify({
-            title,content
-          }),
+          body:JSON.stringify(noteData),
         headers:{
           'Authorization': `Bearer ${refToken}`
          }
@@ -47,6 +49,7 @@ export default function EditPage() {
         
         const data = await res.json()
         
+        console.log(data)
         if(data.statusCode==200){
           showSuccessMessage(data.message)
           console.log(userId)
