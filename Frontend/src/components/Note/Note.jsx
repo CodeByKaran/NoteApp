@@ -44,7 +44,7 @@ export default function Note({title,content,id,refreshNote}) {
    }
 
   return (
-        <div className='h-[220px] bg-gray-300 w-[45%] rounded-lg shadow-xl relative hover:bg-gray-400 transition-all duration-500 hover:text-gray-100 my-4' onMouseLeave={()=>setisMenuClicked(false)}
+        <div className='h-[220px] bg-gray-300 w-[45%] rounded-lg shadow-xl relative hover:bg-gray-400 transition-all duration-500 hover:text-gray-100 my-4 pb-3' onMouseLeave={()=>setisMenuClicked(false)}
          >
             <h3 className='absolute left-3 top-2 text-sm font-medium cursor-default' >{title}</h3>
 
