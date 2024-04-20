@@ -13,7 +13,7 @@ import Forget from './components/ForgetPage/Forget.jsx'
 import Otp from './components/ForgetPage/OtpStep/Otp.jsx'
 import VerifyForgetOtp from './components/ForgetPage/VerifyPage/VerifyForgetOtp.jsx'
 import Pass from './components/ForgetPage/PassStep/Pass.jsx'
-
+import ShowNav from "./components/ShowNavBar/ShowNav.jsx"
 
 
 export default function App() {
@@ -47,10 +47,10 @@ export default function App() {
           <Route path='change-pass' element={<Pass/>} />
          </Route>
       </Routes>
-      {isLogged &&
-      <>
       <nav>
-        <Nav userLogged={userLogged}/>
+       <ShowNav>
+       <Nav userLogged={userLogged}/>
+      </ShowNav>
       </nav>
       <main>
       <Routes>
@@ -60,8 +60,6 @@ export default function App() {
         <Route path='/home/:id/Edit/:id' element={<EditPage/>} />
       </Routes>    
       </main>
-      </>
-     }
     </center>
   )
 }
