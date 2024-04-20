@@ -8,7 +8,7 @@ import bcrypt from "bcryptjs"
 
 
 const options={
-  httpOnl:true,
+  httpOnly:true,
   secured:true
 }
 

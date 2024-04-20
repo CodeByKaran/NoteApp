@@ -7,7 +7,7 @@ import jwt from "jsonwebtoken"
 
 export const Authentication=async(req,res,next)=>{
   try {
-    const token = req.cookies.refreshToken || req.header("Authorization")?.replace("Bearer ","")
+    const token = await req.cookies.refreshToken || req.header("Authorization")?.replace("Bearer ","")
     
     if(!token){
         return res
