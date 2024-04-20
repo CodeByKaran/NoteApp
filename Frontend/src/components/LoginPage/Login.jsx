@@ -9,6 +9,7 @@ import { togglEye } from '../../Hooks/usePassHS.js';
 import { FiLoader } from "react-icons/fi";
 import { GET_USER } from '../../helper/getCurrentUser.js';
 import { getItem } from '../../helper/localStorage.js';
+import {setCookie , getCookie} from "../../helper/cookie.js"
 
 
 export default function Login() {
@@ -44,10 +45,10 @@ export default function Login() {
     
     const data = await res.json()
 
-      console.log(data)
       if(data.statusCode==200){
         if(data.data.isVerified){
           setLoading(false)
+          setCookie("refreshToken",data.data.refreshToken,10)
           dispatch(setUser(data.data))
           navigate(`/home/${data.data._id}`)
           showSuccessMessage("logged In")

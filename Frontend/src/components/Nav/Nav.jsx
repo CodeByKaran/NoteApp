@@ -7,6 +7,7 @@ import { setUser } from '../../func/features/loginData/loginSlice';
 import { showAlert, showSuccessMessage } from '../../Hooks/useShowAlert';
 import axios from "axios"
 import { getItem } from '../../helper/localStorage';
+import {setCookie , getCookie} from "../../helper/cookie.js"
 
 
 export default function Nav({userLogged}) {
@@ -22,12 +23,13 @@ export default function Nav({userLogged}) {
        console.log(userData)
       const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/users/fetch-user",{
         headers:{
-          'Authorization': `Bearer ${userData.refreshToken}`
+          'Authorization': `Bearer ${userData?.refreshToken}`
         }
       })
       const data = await res.json()
       if(data.statusCode==200){
         console.log(data)
+        console.log("cookieNav: ",getCookie("refreshToken"))
         dispatch(setUser(data.data))
       }else{
         //navigate("/login")

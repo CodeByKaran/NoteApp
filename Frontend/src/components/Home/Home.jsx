@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { getUserId } from '../../Hooks/useGetId';
 import { clearInfo, setInfo } from '../../func/features/noteEditInfo/noteEditSlice';
 import { useNavigate } from 'react-router-dom';
+import {setCookie , getCookie} from "../../helper/cookie.js"
 
 export default function Home() {
 
@@ -21,10 +22,11 @@ export default function Home() {
     try {
       const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/logged/note/all",{
         headers:{
-          'Authorization': `Bearer ${userData.refreshToken}`
+          'Authorization': `Bearer ${userData?.refreshToken}`
         }
       })
       const data = await res.json()
+      console.log("cookieHome: ",getCookie("refreshToken"))
       console.log("home: ",data)
       if(data.statusCode==200){
         dispatch(setNotes(data.data))
