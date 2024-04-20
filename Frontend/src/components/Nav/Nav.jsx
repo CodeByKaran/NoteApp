@@ -11,33 +11,22 @@ import { getItem } from '../../helper/localStorage';
 
 export default function Nav({userLogged}) {
   
-  // const [isUser,setIsUsr] = useState(false)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const { userData } = useSelector(state=>state.login)
 
   const getCurrentUSer = async()=>{  
-  const isLog = getItem("isLogged")
   
      try {
       const {data} = await axios.get("/api/v1/users/fetch-user")
       if(data.statusCode==200){
         dispatch(setUser(data.data))
-        // setIsUsr(true)
-        //navigate(`/home/${data.data._id}`)
-        userLogged(true)
       }else{
-        //showAlert(data.response.data.message);
         navigate("/login")
-        // setIsUsr(false)
-        userLogged(false)
       }
     } catch (error) {
-      //showAlert(error.response.data.message);
-      //navigate("/login")
-      // setIsUsr(false)
-      userLogged(false)
+      showAlert(error.message)
     }
 
   }
@@ -51,17 +40,13 @@ export default function Nav({userLogged}) {
     try {
       const {data} = await axios.get("/api/v1/users/log-out")
       if(data.statusCode==200){
-        userLogged(false)
-        // setIsUsr(false)
         setUser(null)
         navigate("/login")
         showSuccessMessage(data.message)
       }else{
-        // setIsUsr(true)
         showSuccessMessage(data.response.data.message)
       }
     } catch (error) {
-      //  setIsUsr(true)
         showSuccessMessage(error.response.data.message)
     }
    }

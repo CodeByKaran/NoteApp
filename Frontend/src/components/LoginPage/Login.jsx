@@ -11,7 +11,7 @@ import { GET_USER } from '../../helper/getCurrentUser.js';
 import { getItem } from '../../helper/localStorage.js';
 
 
-export default function Login({userLogged}) {
+export default function Login() {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -31,7 +31,7 @@ export default function Login({userLogged}) {
     }
 
     try {
-     // const {data} = await axios.post("/api/v1/users/login",credentials)
+
     const res = await fetch("https://noteapp-aznr.onrender.com/api/v1/users/login",{
       method: "POST",
       body: JSON.stringify(credentials),
@@ -49,8 +49,6 @@ export default function Login({userLogged}) {
         if(data.data.isVerified){
           setLoading(false)
           dispatch(setUser(data.data))
-          userLogged(true)
-          //console.log(data.data._id)
           navigate(`/home/${data.data._id}`)
           showSuccessMessage("logged In")
         }else{
@@ -68,10 +66,6 @@ export default function Login({userLogged}) {
   }
 
   useEffect(()=>{
-    const isUserLogged = getItem("isLogged")
-    if(isUserLogged==="false"){
-      return
-    }
     GET_USER()
     .then(res=>{
       navigate(`/home/${res.data._id}`)

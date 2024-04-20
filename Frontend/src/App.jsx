@@ -18,27 +18,13 @@ import ShowNav from "./components/ShowNavBar/ShowNav.jsx"
 
 export default function App() {
 
-  const [isLogged,setIsLogged] = useState(false)
-  
-  setItem(false)
-  
-  const userLogged=(bool)=>{
-    setItem(bool)
-    setIsLogged(bool)
-  }
-
-  useEffect(()=>{
-    let value = Boolean(getItem("isLogged"))
-    setIsLogged(value)
-  },[isLogged])
-
   return (
     <center className='text-black'>
       <Toaster/>
       <Routes>
         <Route path='/' element={<SignUp/>} />
         <Route path='/verify/:id' element={<VerifyPage/>}/>
-        <Route path='/login' element={<Login userLogged={userLogged}/>}/>
+        <Route path='/login' element={<Login />}/>
         <Route path='/forget/*' element={<Forget/>} >
           <Route path='otp' element={<Otp/>} />
           <Route path='verify' element={<VerifyForgetOtp/>} />
@@ -47,7 +33,7 @@ export default function App() {
       </Routes>
       <nav>
        <ShowNav>
-       <Nav userLogged={userLogged}/>
+       <Nav />
       </ShowNav>
       </nav>
       <main>
