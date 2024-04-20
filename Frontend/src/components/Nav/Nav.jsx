@@ -20,22 +20,12 @@ export default function Nav({userLogged}) {
   const getCurrentUSer = async()=>{  
   const isLog = getItem("isLogged")
   
-  console.log("run 1")
-  
-   if(isLog==="false"){
-    userLogged(false)
-   // navigate("/login")
-    return
-   }
-  
      try {
-       console.log("run 2")
       const {data} = await axios.get("/api/v1/users/fetch-user")
       if(data.statusCode==200){
         dispatch(setUser(data.data))
         // setIsUsr(true)
         //navigate(`/home/${data.data._id}`)
-        console.log("run succes")
         userLogged(true)
       }else{
         //showAlert(data.response.data.message);
@@ -45,7 +35,7 @@ export default function Nav({userLogged}) {
       }
     } catch (error) {
       //showAlert(error.response.data.message);
-      navigate("/login")
+      //navigate("/login")
       // setIsUsr(false)
       userLogged(false)
     }
