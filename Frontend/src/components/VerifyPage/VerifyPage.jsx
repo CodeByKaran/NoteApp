@@ -25,7 +25,13 @@ export default function VerifyPage() {
   const verifyUser=async()=>{
     let id = getUserId()
     try {
-     let {data} = await axios.post(`/api/v1/users/verify/${id}`,{userOTP:Number(otp)})
+     //let {data} = await axios.post(`/api/v1/users/verify/${id}`,{userOTP:Number(otp)})
+     let res = fetch(`https://noteapp-aznr.onrender.com/api/v1/users/verify/${id}`,{
+       body: JSON.stringify({
+         userOTP:Number(otp)
+       })
+     })
+     const data = await res.json()
      if(data.statusCode===200){
       navigate("/login")
      }else{
