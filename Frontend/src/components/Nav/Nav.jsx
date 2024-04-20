@@ -23,7 +23,8 @@ export default function Nav({userLogged}) {
       if(data.statusCode==200){
         dispatch(setUser(data.data))
       }else{
-        navigate("/login")
+        //navigate("/login")
+        console.log(data)
       }
     } catch (error) {
       showAlert(error.message)
@@ -36,7 +37,7 @@ export default function Nav({userLogged}) {
   },[])
 
    
-   const logOut=async()=>{
+  const logOut=async()=>{
     try {
       const {data} = await axios.get("/api/v1/users/log-out")
       if(data.statusCode==200){
