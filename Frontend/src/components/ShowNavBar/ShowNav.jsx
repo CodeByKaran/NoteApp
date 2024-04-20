@@ -8,7 +8,7 @@ export default function ShowNav({children}) {
   
   useEffect(()=>{
     let locArr = location.pathname.split("/")
-    console.log(locArr[0])
+    console.log(locArr)
   },[location])
   
   return(
