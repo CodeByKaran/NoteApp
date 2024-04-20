@@ -17,7 +17,6 @@ const genRefreshAndAccessToken=async(userId)=>{
   try {
     const user = await User.findById(userId)
 
-    console.log(user)
     
     const accessToken =  user.genAccessToken()
     const refreshToken =  user.genRefreshToken()
@@ -211,7 +210,9 @@ const loginUser= async(req,res)=>{
       .send(new ApiError(500,"something went wrong while generating tokens"))
 
     }
-
+    
+    console.log(user)
+    
     return res
     .status(200)
     .cookie("accessToken",accessToken,options)
