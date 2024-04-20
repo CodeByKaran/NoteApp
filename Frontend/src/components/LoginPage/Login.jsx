@@ -50,7 +50,7 @@ export default function Login({userLogged}) {
           setLoading(false)
           dispatch(setUser(data.data))
           userLogged(true)
-          console.log(data.data._id)
+          //console.log(data.data._id)
           navigate(`/home/${data.data._id}`)
           showSuccessMessage("logged In")
         }else{
