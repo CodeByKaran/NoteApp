@@ -393,7 +393,7 @@ const logOut = async(req,res)=>{
 
 const getCurrentUser=async(req,res)=>{
   try {
-    const user = await User.findById(req.user._id).select('-password -refreshToken -registerOtp -otpExpirey -resetOtp')
+    const user = await User.findById(req.user._id).select('-password')
 
     if(!user){
       return res
