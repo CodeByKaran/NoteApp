@@ -21,6 +21,9 @@ export default function App() {
   return (
     <center className='text-black'>
       <Toaster/>
+      <ShowNav>
+       <Nav/>
+      </ShowNav>
       <Routes>
         <Route path='/' element={<SignUp/>} />
         <Route path='/verify/:id' element={<VerifyPage/>}/>
@@ -30,20 +33,11 @@ export default function App() {
           <Route path='verify' element={<VerifyForgetOtp/>} />
           <Route path='change-pass' element={<Pass/>} />
          </Route>
-      </Routes>
-      <nav>
-       <ShowNav>
-       <Nav />
-      </ShowNav>
-      </nav>
-      <main>
-      <Routes>
         <Route path='/home/:id' element={<Home/>}/>
         <Route path='/home/*' element={<h1>404 Page Not Found</h1>} />
         <Route path='/home/:id/Edit' element={<EditPage/>} />
         <Route path='/home/:id/Edit/:id' element={<EditPage/>} />
-      </Routes>    
-      </main>
+      </Routes>
     </center>
   )
 }
