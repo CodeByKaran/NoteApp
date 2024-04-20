@@ -9,7 +9,7 @@ export const Authentication=async(req,res,next)=>{
   try {
     const token = await req.cookies.refreshToken || req.header("Authorization")?.replace("Bearer ","")
     
-    console.log("req.cookie",req.cookies)
+    console.log("req.cookie",...req.cookies)
     console.log("header",req.header("Authorization"))
     console.log(token)
     
