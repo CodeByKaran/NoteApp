@@ -6,6 +6,7 @@ import { FaRegEyeSlash } from 'react-icons/fa'
 import { togglEye } from '../../Hooks/usePassHS'
 import { FiLoader } from "react-icons/fi";
 import { GET_USER } from '../../helper/getCurrentUser.js';
+import { FiLoader } from "react-icons/fi";
 
 
 export default function SignUp() {
@@ -79,7 +80,7 @@ export default function SignUp() {
           <FaRegEyeSlash className='absolute  top-0 right-2 text-[14px]' onClick={()=>togglEye("signUpPass")}/>
       </div> 
         </div>
-         <button type="submit" className="text-[15px] bg-gradient-to-tr from-orange-400 to-yellow-200 rounded-md mt-5 text-gray-700 font-[500] w-[100px] flex justify-center items-center h-[35px] pb-[2px]  transition-all duration-300 hover:shadow-lg select-none" onClick={signUpuser} disabled={logging?true:false}>{logging?"Loading...":"sign up"}</button>
+         <button type="submit" className="text-[15px] bg-gradient-to-tr from-orange-400 to-yellow-200 rounded-md mt-5 text-gray-700 font-[500] w-[100px] flex justify-center items-center h-[35px] pb-[2px]  transition-all duration-300 hover:shadow-lg select-none" onClick={signUpuser} disabled={logging?true:false}>{logging?<FiLoader className='text-[18px] animate-spin'/>:"sign up"}</button>
        </form>
        <p className='text-gray-500 text-[12px] mt-7 cursor-default'>Already registered ? <Link to="/login" className='text-indigo-600 underline-offset-2 hover:underline select-none'>Login</Link></p>
       </div>

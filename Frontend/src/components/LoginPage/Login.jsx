@@ -89,7 +89,7 @@ export default function Login() {
       </div> 
       <Link to="/forget/otp" className='text-[12px] text-start mt-4 text-blue-800 underline underline-offset-2'>forget pasword?</Link>
       </div>
-       <button type="submit" className="text-[15px] bg-gradient-to-tr from-orange-400 to-yellow-200 rounded-md mt-5 text-gray-700 font-[500] w-[100px] flex justify-center items-center h-[35px] pb-[2px]  transition-all duration-300 hover:shadow-lg select-none" onClick={login}>
+       <button type="submit" className="text-[15px] bg-gradient-to-tr from-orange-400 to-yellow-200 rounded-md mt-5 text-gray-700 font-[500] w-[100px] flex justify-center items-center h-[35px] pb-[2px]  transition-all duration-300 hover:shadow-lg select-none" onClick={login} disabled={loading}>
         {
           !loading?"Login":<FiLoader className='text-[18px] animate-spin'/>
         }

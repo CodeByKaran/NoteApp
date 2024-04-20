@@ -1,17 +1,20 @@
-import React, { useRef } from 'react'
+import React, { useRef,useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { showAlert, showSuccessMessage } from '../../../Hooks/useShowAlert'
 import axios from "axios"
 import { setAnyLocal } from '../../../helper/localStorage'
+import { FiLoader } from "react-icons/fi";
 
 export default function Otp() {
 
    const navigate = useNavigate()
    const emailRef = useRef()
+   const [loading,setLoading] = useState(false)
 
   const sendOtp=async(e)=>{
     e.preventDefault()
     try {
+      setLoading(true)
       const email = emailRef.current.value
       if(!email){
         showAlert("email is required")
@@ -39,6 +42,8 @@ export default function Otp() {
       }     
     } catch (error) {
       showAlert(error.response.data.message || "something went wrong")
+    } finally {
+      setLoading(false)
     }
     
   }
@@ -50,7 +55,10 @@ export default function Otp() {
         <label htmlFor="forgetEmail" className='text-start text-[14px] w-full px-[2px]'>Email</label>
         <input type="email" className='border  mt-1 rounded placeholder:text-[14px] p-1 text-[15px] outline-none focus-within:border-gray-600' placeholder='example@gmail.com' spellCheck="false" id='forgetEmail' ref={emailRef}/>
       </form>
-      <button className='mt-[50px] text-[16px] bg-gradient-to-br from-orange-400 to-orange-300 p-1 rounded-full w-[90px] font-semibold text-slate-800 shadow-md hover:scale-95' onClick={sendOtp}>Next</button>
+      <button className='mt-[50px] text-[16px] bg-gradient-to-br from-orange-400 to-orange-300 p-1 rounded-full w-[90px] font-semibold text-slate-800 shadow-md hover:scale-95' onClick={sendOtp} disabled={loading}>
+      {
+        !loading?"Send":<FiLoader className='text-[18px] animate-spin'/>
+        }</button>
     </div>
   )
 }

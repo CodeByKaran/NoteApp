@@ -1,17 +1,20 @@
-import React, { useRef } from 'react'
+import React, { useRef,useState } from 'react'
 import { useNavigate } from "react-router-dom"
 import { getItem } from '../../../helper/localStorage'
 import { showAlert, showSuccessMessage } from '../../../Hooks/useShowAlert'
 import axios from 'axios'
+import { FiLoader } from "react-icons/fi";
 
 export default function VerifyForgetOtp() {
 
    const navigate = useNavigate()
    const otpRef = useRef()
+   const [loading,setLoading] = useState(false)
 
    const VerifyResetPass=async(e)=>{
     e.preventDefault()
     try {
+      setLoading(true)
       const config = {
         email: getItem("email"),
         otp : otpRef.current.value
@@ -43,6 +46,8 @@ export default function VerifyForgetOtp() {
 
     } catch (error) {
       showAlert(error.response.data.message || "something went wrong")
+    } finally {
+      setLoading(false)
     }
    }
 
@@ -53,7 +58,10 @@ export default function VerifyForgetOtp() {
         <label htmlFor="forgetEmail" className='text-start text-[14px] w-full px-[2px]'>OTP</label>
         <input type="number" className='border  mt-1 rounded placeholder:text-[14px] p-1 text-[15px] outline-none focus-within:border-gray-600 remove_Num_Pad' placeholder='xxxx' spellCheck="false" maxLength="4" ref={otpRef}/>
       </form>
-      <button className='mt-[50px] text-[16px] bg-gradient-to-br from-orange-400 to-orange-300 p-1 rounded-full w-[90px] font-semibold text-slate-800 shadow-md hover:scale-95' onClick={VerifyResetPass}>Verify</button>
+      <button className='mt-[50px] text-[16px] bg-gradient-to-br from-orange-400 to-orange-300 p-1 rounded-full w-[90px] font-semibold text-slate-800 shadow-md hover:scale-95' onClick={VerifyResetPass} disabled={loading}>
+      {
+        !loading?"Verify":<FiLoader className='text-[18px] animate-spin'/>
+        }</button>
     </div>
   )
 }

@@ -1,18 +1,23 @@
-import React, { useRef } from 'react'
+import React, { useRef,useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { showAlert, showSuccessMessage } from '../../../Hooks/useShowAlert'
 import { clearLocal, getItem, setAnyLocal } from '../../../helper/localStorage'
 import axios from 'axios'
+import { FiLoader } from "react-icons/fi";
+
 
 export default function Pass() {
 
  const navigate = useNavigate() 
  const newPassRef = useRef()
  const confirmPassRef = useRef()
+ const [loading,setLoading] = useState(false)
+
 
   const changePass=async(e)=>{
     e.preventDefault()
     try {
+      setLoading(true)
       if(newPassRef.current.value!==confirmPassRef.current.value){
         showAlert("password should be match")
         return
@@ -49,6 +54,8 @@ export default function Pass() {
       }     
     } catch (error) {
       showAlert(error.response.data.message || "something went wrong")
+    } finally {
+      setLoadind(false)
     }
   }
 
@@ -62,7 +69,10 @@ export default function Pass() {
         <label htmlFor="ConfirmPass" className='text-start text-[14px] w-full px-[2px] mt-4'>Confirm Password</label>
         <input type="text" className='border mt-1 rounded placeholder:text-[14px] p-1 text-[15px] outline-none focus-within:border-gray-600' placeholder='@kksg#sk' spellCheck="false" ref={confirmPassRef}/>
       </form>
-      <button className='mt-[50px] text-[16px] bg-gradient-to-br from-orange-400 to-orange-300 p-1 rounded-full w-[90px] font-semibold text-slate-800 shadow-md hover:scale-95' onClick={changePass}>Reset</button>
+      <button className='mt-[50px] text-[16px] bg-gradient-to-br from-orange-400 to-orange-300 p-1 rounded-full w-[90px] font-semibold text-slate-800 shadow-md hover:scale-95' onClick={changePass} disabled={loading}>
+      {
+        !loading?"Reset":<FiLoader className='text-[18px] animate-spin'/>
+        }</button>
     </div>
     </div>
   )
