@@ -26,7 +26,7 @@ export default function Nav({userLogged}) {
         dispatch(setUser(data.data))
       }else{
         //navigate("/login")
-        console.log(data)
+        console.log("nav: ",data)
       }
     } catch (error) {
       showAlert(error.message)
