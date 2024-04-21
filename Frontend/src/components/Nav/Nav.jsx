@@ -34,6 +34,7 @@ export default function Nav({userLogged}) {
         navigate("/login")
       }
     } catch (error) {
+      navigate("/login")
       showAlert(error.message)
     }
 
