@@ -58,7 +58,7 @@ export default function Home() {
         }
       </div>
       
-      <button className='bg-orange-400 w-[40px] h-[40px] flex justify-center items-center rounded-full absolute bottom-6 right-6 hover:shadow-lg hover:shadow-orange-500 transition-all duration-300' onClick={clearNoteInfo}>
+      <button className='bg-orange-400 w-[40px] h-[40px] flex justify-center items-center rounded-full fixed bottom-6 right-6 hover:shadow-lg hover:shadow-orange-500 transition-all duration-300' onClick={clearNoteInfo}>
        <IoMdAddCircleOutline className='text-slate-900 hover:scale-125 transition-all duration-300'/>
       </button>
     </div>
