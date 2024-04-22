@@ -80,7 +80,7 @@ export default function Login() {
      <h1 className='w-full text-center cursor-default'>Login</h1>
      <form className=' w-full mt-5'>
       <div className='flex flex-col items-start'>
-      <label htmlFor="username" className='text-[13px] text-gray-500 ml-[2px] mt-2 flex w-full pl-[2px]'>Username,Email</label>
+      <label htmlFor="username" className='text-[13px] text-gray-500 ml-[2px] mt-2 flex w-full pl-[2px]'>Email</label>
       <input type="text" name="username" className='border-gray-700 border-b mt-1 outline-none text-[14px] focus:scale-110 transition-all duration-300 placeholder:text-gray-300 w-full' placeholder='karan12u' ref={usernameRef} autoComplete='false' spellCheck="false" id='username'/>
       <label htmlFor="loginPass" className='text-[13px] text-gray-500 ml-[2px] mt-2 flex w-full pl-[2px]'>Password</label>
       <div className='relative w-full flex items-center mt-1 '>
