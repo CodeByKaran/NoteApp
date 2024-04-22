@@ -19,8 +19,8 @@ export default function Pass() {
     try {
       setLoading(true)
       if(newPassRef.current.value!==confirmPassRef.current.value){
+         setLoading(false)
         showAlert("password should be match")
-        setLoading(false)
         return
       }
 
@@ -31,6 +31,7 @@ export default function Pass() {
 
       if(!config.newPass){
         showAlert("password is required")
+        setLoading(false)
         return
       }
 
@@ -50,13 +51,14 @@ export default function Pass() {
         clearLocal("email")
         showSuccessMessage("password changed")       
         navigate("/login")
+        setLoading(false)
       }else{
         showAlert(data.message)
       }     
     } catch (error) {
       showAlert(error.response.data.message || "something went wrong")
     } finally {
-      setLoadind(false)
+      setLoading(false)
     }
   }
 
