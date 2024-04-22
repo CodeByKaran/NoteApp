@@ -20,6 +20,7 @@ export default function Pass() {
       setLoading(true)
       if(newPassRef.current.value!==confirmPassRef.current.value){
         showAlert("password should be match")
+        setLoading(false)
         return
       }
 
