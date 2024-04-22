@@ -14,7 +14,6 @@ import Otp from './components/ForgetPage/OtpStep/Otp.jsx'
 import VerifyForgetOtp from './components/ForgetPage/VerifyPage/VerifyForgetOtp.jsx'
 import Pass from './components/ForgetPage/PassStep/Pass.jsx'
 import ShowNav from "./components/ShowNavBar/ShowNav.jsx"
-import {useSelector} from "react-router-dom"
 
 
 export default function App() {

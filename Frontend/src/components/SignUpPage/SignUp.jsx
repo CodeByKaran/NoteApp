@@ -15,6 +15,7 @@ export default function SignUp() {
   const emailRef = useRef()
   const passwordRef = useRef()
   const [logging,setLogging] = useState(false)
+  const [isSearching,setIsSearching]=useState(false)
 
   const signUpuser=async(e)=>{
     e.preventDefault()
@@ -56,15 +57,19 @@ export default function SignUp() {
   }
   
   useEffect(()=>{
+     setIsSearching(true)
     GET_USER()
     .then(res=>{
       navigate(`/home/${res.data._id}`)
+      setIsSearching(false)
     })
-    .catch(error=>console.log(error))
+    .catch(error=>setIsSearching(false))
   },[])
    
   return (
     <div className='h-[100vh] w-full flex justify-center items-center select-none'>
+    {
+       isSearching?<FiLoader className="animate-spin text-3xl text-orange-600"/>:
       <div className='p-2 rounded-lg h-fit w-[300px] border border-gray-400/50 md:w-[350px] flex flex-col items-center px-7 shadow-md bg-white'>
        <h1 className='w-full text-center cursor-default'>SignUp</h1>
        <form className=' w-full mt-5'>
@@ -83,6 +88,7 @@ export default function SignUp() {
        </form>
        <p className='text-gray-500 text-[12px] mt-7 cursor-default'>Already registered ? <Link to="/login" className='text-indigo-600 underline-offset-2 hover:underline select-none'>Login</Link></p>
       </div>
+    }
     </div>
   )
 }
