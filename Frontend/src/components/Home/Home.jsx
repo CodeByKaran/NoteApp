@@ -18,8 +18,6 @@ export default function Home() {
   const navigate = useNavigate()
   const [loading,setLoading]=useState(false)
 
-  const {Notes} = useSelector(state=>state.note)
-
   const { userData } = useSelector(state=>state.login)
   
 
@@ -45,9 +43,10 @@ export default function Home() {
   })
 
   useEffect(()=>{
-    if(!Notes.length)
     getAllNotes()
   },[])
+
+  const {Notes} = useSelector(state=>state.note)
 
   
   const id = getUserId()
