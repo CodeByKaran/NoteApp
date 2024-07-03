@@ -17,8 +17,11 @@ export default function Home() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [loading,setLoading]=useState(false)
-  
+
+  const {Notes} = useSelector(state=>state.note)
+
   const { userData } = useSelector(state=>state.login)
+  
 
   const getAllNotes=useCallback(async()=>{
     try {
@@ -42,11 +45,11 @@ export default function Home() {
   })
 
   useEffect(()=>{
+    if(!Notes.length)
     getAllNotes()
   },[])
 
-  const {Notes} = useSelector(state=>state.note)
-
+  
   const id = getUserId()
 
   const clearNoteInfo=async()=>{
