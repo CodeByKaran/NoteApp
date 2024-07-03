@@ -46,7 +46,7 @@ export default function Note({title,content,id,refreshNote}) {
   return (
         <div className='min-h-[241px] h-fit bg-gray-300 w-[45%] rounded-lg shadow-xl relative hover:bg-gray-400 transition-all duration-500 hover:text-gray-100 my-4 pb-3' onMouseLeave={()=>setisMenuClicked(false)}
          >
-            <h3 className='absolute left-3 top-2 text-sm font-medium cursor-default max-w-[70%] overflow-hidden text-start' >{title}</h3>
+            <h3 className='absolute left-3 top-2 text-sm font-medium cursor-default max-w-[70%] overflow-scroll text-start' >{title}</h3>
 
             <div className='absolute bg-red-400 w-fit right-1'>
 
